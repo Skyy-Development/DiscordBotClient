@@ -1,0 +1,80 @@
+{
+	"name": "discord-bot-client",
+	"version": "3.2.1",
+	"DiscordBuildVersion": 275565,
+	"description": "Discord Bot Client",
+	"main": "./AppCore/index.js",
+	"dependencies": {
+		"discord-protos": "^1.0.5",
+		"electron-log": "^4.4.8",
+		"electron-store": "^8.2.0",
+		"express": "^4.19.1",
+		"lambert-server": "^1.2.12",
+		"lodash": "^4.17.21",
+		"morgan": "^1.10.0",
+		"multer": "^1.4.5-lts.1",
+		"node-fetch": "^2.6.7",
+		"request": "^2.88.2"
+	},
+	"devDependencies": {
+		"electron": "^28.1.4",
+		"electron-builder": "^24.9.1",
+		"jsdom": "^24.0.0"
+	},
+	"build": {
+		"files": [
+			"!scripts",
+			"!DiscordCore"
+		],
+		"appId": "DiscordBotClient",
+		"productName": "DiscordBotClient",
+		"artifactName": "${productName}-${os}-${arch}.${ext}",
+		"copyright": "Copyright © 2024 @skycode",
+		"mac": {
+			"category": "public.app-category.social-networking",
+			"target": [
+				"dmg"
+			],
+			"icon": "./AppAssets/DiscordBotClient.png"
+		},
+		"linux": {
+			"target": [
+				"AppImage"
+			],
+			"icon": "./AppAssets/DiscordBotClient.png"
+		},
+		"win": {
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"x64"
+					]
+				}
+			],
+			"icon": "./AppAssets/DiscordBotClient.png"
+		},
+		"asar": false
+	},
+	"scripts": {
+		"start": "electron AppCore\\index.js",
+		"mac": "electron-builder -m",
+		"win": "electron-builder -w",
+		"linux": "electron-builder -l",
+		"build": "electron-builder",
+		"requirement": "npm install && npm run npmVencord",
+		"fetchLatestDiscordBuild": "electron scripts/findMainScript.js",
+		"npmVencord": "cd VencordDBC && npm i -f && cd ..",
+		"vencord": "cd VencordDBC && node --require=./scripts/suppressExperimentalWarnings.js scripts/build/buildWeb.mjs && cd ..",
+		"cerf": "openssl req -nodes -new -x509 -keyout server.key -out server.cert -days 3650 -subj \"/CN=localhost\""
+	},
+	"author": {
+		"name": "skycode",
+		"email": "blahblah"
+	},
+	"repository": {
+		"url": "https://github.com/skyy-development"
+	},
+	"license": "ISC",
+	"productName": "Discord Bot Client"
+}

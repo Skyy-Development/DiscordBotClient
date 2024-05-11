@@ -1,0 +1,18 @@
+module.exports = [
+	'outbound-promotions/codes',
+	'science',
+	'applications/public',
+	'notes',
+	'roles/member-counts',
+	'member-ids',
+	'connections/configuration',
+	'users/@me/mfa/totp',
+	'users/@me/disable',
+	'users/@me/delete',
+	'users/@me/mfa',
+	'users/@me/phone',
+	'connections/eligibility',
+	'interaction-data',
+	'member-verification',
+	'cdn-cgi/challenge-platform',
+];
